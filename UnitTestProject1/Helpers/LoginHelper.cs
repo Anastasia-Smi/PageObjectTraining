@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+
+
+namespace Selenium_Csharp_2022
+{
+    public class LoginHelper : HelperBase
+    {
+        public LoginHelper(ApplicationManager manager)
+            : base(manager)
+        {
+        }
+
+
+        public void LogIn()
+        {
+            string username = "admin";
+            string password = "admin";
+
+            Driver.FindElement(By.Name("username")).SendKeys(username);
+
+            Driver.FindElement(By.Name("password")).SendKeys(password);
+
+            Driver.FindElement(By.Name("login")).Click();
+        }
+
+        //public void Login(AccountData account)
+        //{
+        //    //if (IsLoggedIn())
+        //    //{
+        //    //    if (IsLoggedIn(account))
+        //    //    {
+        //    //        return;
+        //    //    }
+        //    //    LogOut();
+        //    //}
+        //    Type(By.Name("user"), account.Username);
+        //    Type(By.Name("pass"), account.Password);
+        //    Driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+        //}
+
+        public LoginHelper ClickLogInButton()
+        {
+            var LoginButton = Driver.FindElement(By.Name("login"));
+            LoginButton.Click();
+            return this;
+        }
+
+
+        public void LogOut()
+        {
+            if (IsLoggedIn())
+            {
+                Driver.FindElement(By.LinkText("Logout")).Click();
+            }
+
+        }
+        //public bool IsLoggedIn(AccountData account)
+        //{
+        //    return IsLoggedIn()
+        //        && GetLoggedUserName() == account.Username;
+
+        //}
+
+        //public string GetLoggedUserName()
+        //{
+        //    string text = driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text;
+        //    return text.Substring(1, text.Length - 2);
+        //}
+
+        public bool IsLoggedIn()
+        {
+            return IsElementPresent(By.Name("logout"));
+        }
+
+    }
+}

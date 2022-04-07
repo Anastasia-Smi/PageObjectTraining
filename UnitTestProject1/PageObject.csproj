@@ -49,6 +49,12 @@
     <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Selenium.WebDriver.WaitExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.WaitExtensions.2.0.0\lib\netstandard2.0\Selenium.WebDriver.WaitExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -60,17 +66,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ApplicationManager\ApplicationManager.cs" />
+    <Compile Include="Data\AccountData.cs" />
+    <Compile Include="Helpers\AllProductsPageHelper.cs" />
+    <Compile Include="Helpers\CheckoutPageHelper.cs" />
+    <Compile Include="Helpers\HelperBase.cs" />
+    <Compile Include="Helpers\LoginHelper.cs" />
+    <Compile Include="Helpers\NavigationHelper.cs" />
+    <Compile Include="BaseTest.cs" />
+    <Compile Include="Helpers\ProductPageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UITests\AddToCardTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-    <Folder Include="NewFolder2\" />
-    <Folder Include="NewFolder3\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
